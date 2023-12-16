@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .Youtube{
+            text-align: center;
+            background-color: rgba(109, 150, 150, 0.637);
+            height: 100vh;
+        }
+        h1{
+            color: green;
+            font-size: 40px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="Youtube">
+    <h1>Custome Youtube Player</h1>
+    <div id="player" >
+    </div>
+</div>
+    <script>
+        var apiKey = 'AIzaSyADDKgp1fKyF6LT7F4AR3jJbn06AYfcFxM';
+        var videoId = 'M8N36RCozIQ'; 
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: videoId,
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 1,
+                    'fs': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
+</body>
+</html>
